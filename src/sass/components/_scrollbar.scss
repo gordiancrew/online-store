@@ -1,0 +1,63 @@
+.scrollbar__wrapper-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+  //max-width: 150px;
+}
+
+.scrollbar__input {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient($color-slider-line, $color-slider-line);
+  //background-size: 0% 100%;
+  background-repeat: no-repeat;
+  -webkit-appearance: none; /* отключения стандартной расскраски */
+  height: 6px;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  &_min {
+    //top: 0px;
+    //left: 0px;
+
+    z-index: 10;
+  }
+  &_max {
+    background-position: right;
+  }
+}
+
+.scrollbar__input::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background-color: $color-slider-hover;
+}
+
+.scrollbar__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: $color-slider;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.scrollbar__line {
+  height: 6px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: $color-slider;
+}
+
+.scrollbar__text {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+.scrollbar__wrapper-amount {
+  padding: 10px 10px 5px 10px;
+  display: flex;
+  justify-content: space-between;
+}
