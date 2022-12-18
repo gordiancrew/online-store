@@ -38,4 +38,16 @@
     left: 0px;
     position: absolute;
   }
+
+  &_grid {
+    background-image: url(../src/assets/svg/grid.svg);
+    width: 30px;
+    height: 30px;
+  }
+
+  &_list {
+    background-image: url(../src/assets/svg/list.svg);
+    width: 30px;
+    height: 30px;
+  }
 }
