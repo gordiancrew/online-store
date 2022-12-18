@@ -1,0 +1,138 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  min-width: 210px;
+  max-width: 23%;
+}
+
+.product__wrapper-title {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+}
+
+.product__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.product__wrapper-img {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  align-self: center;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.product__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__wrapper-rating {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product__description {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.product__price {
+  font-size: 2.6rem;
+  font-weight: 700;
+  &::before {
+    content: '$';
+    position: relative;
+    display: inline-block;
+  }
+}
+
+.product__wrapper-stock {
+  display: flex;
+  justify-content: start;
+}
+
+.product__stock {
+  background-color: $color-stock;
+  font-size: 1.4rem;
+  color: white;
+  border-radius: 10px;
+  padding: 3px 10px 3px 10px;
+  &::before {
+    content: 'Stock: ';
+    position: relative;
+    display: inline-block;
+    font-size: 1.4rem;
+  }
+}
+
+.product__rating {
+  font-size: 1.4rem;
+  &::before {
+    content: '';
+    position: relative;
+    display: inline-block;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
+    background-image: url(../src/assets/svg/star.svg);
+  }
+}
+
+.product__discount {
+  background-color: $color-discount;
+  font-size: 1.4rem;
+  color: white;
+  border-radius: 10px;
+  padding: 3px 10px 3px 10px;
+  &::before {
+    content: '-%';
+    position: relative;
+    display: inline-block;
+    font-size: 1.4rem;
+  }
+}
+
+.product__add {
+  background-color: $color-primary;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  color: white;
+  background-image: url(../src/assets/svg/cart.svg);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: left 9px top 10px;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.product__wrapper-price {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.product__wrapper-category {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.product__category {
+  border-bottom: 1px solid $color-primary;
+}
