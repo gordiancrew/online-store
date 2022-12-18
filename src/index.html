@@ -16,7 +16,97 @@
         <div class="header__cart"><span class="icon icon_cart"></span><span class="header__amount">0</span></div>
       </div>
     </header>
-    <main class="main wrapper"></main>
+    <main class="main wrapper">
+      <div class="store-page">
+        <div class="filters tile">
+          <div class="filters__title">Filters</div>
+          <div class="filters__wrapper-links">
+            <div class="filters__link filters__link_copy">Copy link</div>
+            <div class="filters__link filters__link_reset">Reset Filters</div>
+          </div>
+          <div class="filters__wrapper-category">
+            <div class="filter__wrapper_subtitle">
+              <p class="filters__subtitle">Category</p>
+              <div class="filter__arrow"></div>
+            </div>
+            <ul class="filters__wrapper-list">
+              <li class="filters__item">
+                <div class="filters__wrapper-checkbox">
+                  <input type="checkbox" class="filters__checkbox" id="smartphones" name="smartphones" value="true" />
+                  <label for="smartphones">smartphones</label>
+                </div>
+                <span>(0/0)</span>
+              </li>
+              <li class="filters__item filters__item_disaibled">
+                <div class="filters__wrapper-checkbox">
+                  <input type="checkbox" class="filters__checkbox" id="laptop" name="laptop" value="true" />
+                  <label for="laptop">laptop</label>
+                </div>
+                <span>(0/0)</span>
+              </li>
+            </ul>
+          </div>
+          <div class="filters__wrapper-category">
+            <div class="filter__wrapper_subtitle">
+              <p class="filters__subtitle">Brand</p>
+              <div class="filter__arrow"></div>
+            </div>
+            <ul class="filters__wrapper-list">
+              <li class="filters__item">
+                <div class="filters__wrapper-checkbox">
+                  <input type="checkbox" class="filters__checkbox" id="apple" name="apple" value="true" />
+                  <label for="apple">Apple</label>
+                </div>
+                <span>(0/0)</span>
+              </li>
+              <li class="filters__item filters__item_disaibled">
+                <div class="filters__wrapper-checkbox">
+                  <input type="checkbox" class="filters__checkbox" id="samsung" name="samsung" value="true" />
+                  <label for="samsung">Samsung</label>
+                </div>
+                <span>(0/0)</span>
+              </li>
+            </ul>
+          </div>
+          <div class="filters__wrapper-category">
+            <p class="filters__subtitle">Price</p>
+            <div class="filters__wrapper-scrollbar">
+              <div class="scrollbar">
+                <div class="scrollbar__wrapper-amount">
+                  <div class="scrollbar__text scrollbar__text_min">10</div>
+                  <div class="scrollbar__text scrollbar__text_max">2000</div>
+                </div>
+                <div class="scrollbar__wrapper-line">
+                  <div class="scrollbar__line"></div>
+                  <input class="scrollbar__input scrollbar__input_min" type="range" min="10" max="2000" value="800" step="10" style="background-size: 40% 100%"></input>
+                  <input class="scrollbar__input scrollbar__input_max" type="range" min="10" max="2000" value="1600" step="10" style="background-size: 20% 100%"></input>
+                </div>                
+              </div>
+            </div>
+          </div>
+          <div class="filters__wrapper-category">
+            <p class="filters__subtitle">Stock</p>
+            <div class="filters__wrapper-scrollbar">
+              <div class="scrollbar">
+                <div class="scrollbar__wrapper-amount">
+                  <div class="scrollbar__text scrollbar__text_min">10</div>
+                  <div class="scrollbar__text scrollbar__text_max">2000</div>
+                </div>
+                <div class="scrollbar__wrapper-line">
+                  <div class="scrollbar__line"></div>
+                  <input class="scrollbar__input scrollbar__input_min" type="range" min="10" max="2000" value="800" step="10" style="background-size: 40% 100%"></input>
+                  <input class="scrollbar__input scrollbar__input_max" type="range" min="10" max="2000" value="1600" step="10" style="background-size: 20% 100%"></input>
+                </div>                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-products"></div>
+      </div>
+      <div class="cart-page"></div>
+      <div class="purchase-modal"></div>
+      <div class="page-404"></div>
+    </main>
     <footer class="footer wrapper">
       <ul class="footer__nav-list">
         <li class="footer__item">

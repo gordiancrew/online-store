@@ -43,6 +43,9 @@ html {
   @extend %font-primary;
   font-size: 2rem;
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 ul {
