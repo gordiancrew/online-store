@@ -1,6 +1,6 @@
-import { IProducts } from '../../types/product.interface';
+import { Products } from '../../types/product.interface';
 
-type NewType = (data: IProducts) => void;
+type NewType = (data: Products) => void;
 class Loader {
   errorHandler(res: Response): Response {
     if (!res.ok) {
@@ -11,11 +11,11 @@ class Loader {
     return res;
   }
 
-  load(method: string, callback: (data: IProducts) => void): void {
+  load(method: string, callback: (data: Products) => void): void {
     fetch('https://dummyjson.com/products', { method })
       .then(this.errorHandler)
       .then((res2) => res2.json())
-      .then((data: IProducts) => callback(data))
+      .then((data: Products) => callback(data))
       .catch((err) => console.error(err));
   }
 }

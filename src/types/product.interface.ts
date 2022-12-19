@@ -21,6 +21,7 @@ export interface Product {
   thumbnail: string;
   images: string[];
   category: string;
+  stock: number;
 }
 export interface ProductSource {
   id: null | string;

@@ -1,4 +1,3 @@
-import { IProduct } from '../../types/product.interface';
 import Loader from '../loader/loaderData';
 import StorageData from '../storage/storage';
 
