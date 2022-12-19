@@ -1,4 +1,4 @@
-import { IProduct } from '../../types/product.interface';
+
 
 class Controller {
   startAction() {

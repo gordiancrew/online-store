@@ -1,22 +1,22 @@
-export interface IProduct {
+export interface Product {
     id: string;
     tittle: string;
 }
-export interface IProducts {
+export interface Products {
     filter(arg0: (_item: string, idx: number) => boolean): unknown;
     length: number;
     status: string;
     totalResults: number;
-    products: IProduct[];
+    products: Product[];
 }
 
-export interface IProduct {
+export interface Product {
     id: string;
     title: string;
     images:string[];
     category:string;
 }
-export interface IProductSource {
+export interface ProductSource {
     id: null | string;
     title: null | string;
 }
