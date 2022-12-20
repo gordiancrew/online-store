@@ -2,13 +2,28 @@ import { Product } from '../../types/product.interface';
 
 class Draw {
 
-  listProd = document.querySelector('.list-products');
+  listProd = document.querySelector('.list-products') as HTMLElement;
+  checkBoxSmartphones = document.querySelector("#smartphones") as HTMLInputElement;
+  checkBoxApple = document.querySelector("#apple") as HTMLInputElement;
+
   drawProducts(products: Array<Product>) {
     console.log('start draw products cards');
-    products.forEach((prod)=>this.drawProdCart(prod));
+    this.listProd ? this.listProd.innerHTML = '' : this.listProd;
+    //clear product list area befor new drawing
+
+    if (this.checkBoxSmartphones.checked) {
+      products = products.filter((p) => p.category === 'smartphones');
+    }
+    if (this.checkBoxApple.checked) {
+      products = products.filter((p) => p.brand === 'Apple');
+    }
+
+    products.forEach((prod) => this.drawProdCart(prod));
+    //draw all elements type Product of data array
   }
 
   drawProdCart(product: Product) {
+    //draw new product card and append it to product list
     let prod = document.createElement('div');
     prod.style.border = '1px solid black';
     prod.style.borderRadius = '10px';
@@ -49,7 +64,7 @@ class Draw {
     prodRaiting.innerText = product.rating.toString();
     const prodDiscont = document.createElement('div');
     prodDiscont.classList.add('product__discount');
-    prodDiscont.innerText=product.discountPercentage.toString();
+    prodDiscont.innerText = product.discountPercentage.toString();
     prodWrapperRating.appendChild(prodRaiting);
     prodWrapperRating.appendChild(prodDiscont);
     prod.appendChild(prodWrapperRating);
