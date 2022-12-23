@@ -40,6 +40,7 @@ const baseConfig = {
     filename: 'index.[contenthash].js',
     path: path.resolve(__dirname, './dist'),
     assetModuleFilename: 'images/[hash][ext][query]',
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({
