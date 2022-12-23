@@ -1,0 +1,17 @@
+.cart-page {
+    display: flex;
+    gap: 10px;
+}
+
+.cart-page__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.cart-page__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
