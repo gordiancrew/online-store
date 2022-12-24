@@ -1,13 +1,21 @@
+
+import { Filter } from '../../types/filter.interface';
 import { IProduct } from '../../types/product.interface';
+import Filters from '../storage/filter';
 
 class Controller {
+  filter: Filters = new Filters();
   startAction() {
     console.log('start action');
-    // let bat = document.querySelector('.btn') as HTMLElement;
-    // bat.onclick = function () {
-    //   console.log('btn click');
-    //   JSON.parse(localStorage.dataProducts).forEach((x: IProduct,index:number) => console.log(index+" - " + x.title));
-    // };
+    let ListAllProduct:Array<IProduct> = JSON.parse(localStorage.dataProducts);
+    //get all products
+    console.log("Our products: "+ListAllProduct);
+
+    let filter:Filter= this.filter.getMyFilter();
+    //get object filter
+    console.log("Our filter: "+filter);
+
+
   }
 }
 

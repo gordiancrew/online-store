@@ -1,4 +1,5 @@
 import { IProducts } from '../../types/product.interface';
+import Filters from '../storage/filter';
 
 type NewType = (data: IProducts) => void;
 class Loader {
@@ -12,6 +13,7 @@ class Loader {
   }
 
   load(method: string, callback: (data: IProducts) => void): void {
+    new Filters();
     fetch('https://dummyjson.com/products', { method })
       .then(this.errorHandler)
       .then((res2) => res2.json())
