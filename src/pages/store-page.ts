@@ -11,9 +11,6 @@ export const storePage = {
   },
   renderProducts: function (products: Array<IProduct>) {
     const listProd = document.querySelector('.list-products') as HTMLElement;
-    const checkBoxSmartphones = document.querySelector('#smartphones') as HTMLInputElement;
-
-    console.log('start draw products cards');
     listProd ? (listProd.innerHTML = '') : listProd;
     //clear product list area befor new drawing
 
