@@ -13,8 +13,15 @@ export interface IProducts {
 export interface IProduct {
     id: string;
     title: string;
-    images:string[];
-    category:string;
+    description: string;
+    price: number;
+    discountPercentage: number;
+    rating: number;
+    brand: string;
+    thumbnail: string;
+    images: string[];
+    category: string;
+    stock: number;
 }
 export interface IProductSource {
     id: null | string;
