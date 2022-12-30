@@ -23,8 +23,6 @@ export const storePage = {
     function drawProdCart(product: IProduct) {
       //draw new product card and append it to product list
       let prod = document.createElement('div');
-      prod.style.border = '1px solid black';
-      prod.style.borderRadius = '10px';
       prod.classList.add('product');
 
       let prodWrapperTitle = document.createElement('div');
