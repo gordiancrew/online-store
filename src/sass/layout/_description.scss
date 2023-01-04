@@ -1,0 +1,136 @@
+.description {
+  padding: 10px;
+}
+
+.description__chits{
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    font-size: 2rem;
+    color: rgb(65, 50, 50);
+}
+
+.description__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.description__content {
+  display: flex;
+  background-color: rgb(144, 133, 133);
+  justify-content: center;
+}
+
+.description__section-photo {
+  width: 34%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.description__section-itemis {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 34%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.description__section-detalis {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.description__item {
+  width: 90%;
+  background-color: aliceblue;
+  overflow: hidden;
+}
+
+.description__item-title {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+}
+
+.description__item-value {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(120, 136, 136);
+}
+
+.description__photo-items {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.description__photo-item-wrapper {
+  width: 90%;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.description__photo-item-img {
+  height: 90px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.description__photo-item-img:hover {
+  height: 100px;
+  transition: 0.25s;
+}
+.description__photo-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+}
+
+.description__photo-img-wrapper {
+  height: 200px;
+  width: 90%;
+  overflow: hidden;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.description__photo-img {
+  height: 200px;
+}
+
+.description__price {
+  font-size: 5rem;
+}
+.description__button {
+  width: 80%;
+  height: 50px;
+  background-color: aqua;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.description__button:hover{
+    background-color: rgb(19, 160, 160);  
+}
