@@ -1,0 +1,19 @@
+.cart-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+ 
+    padding: 10px 10px 10px 10px;
+    gap: 20px;
+    width: 60v;
+}
+
+.cart-list__title {
+    display: flex;
+    
+    justify-content: space-between;
+ 
+    padding: 10px 10px 10px 10px;
+    gap: 20px;
+    width: 60v;
+}
