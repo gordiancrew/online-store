@@ -9,15 +9,16 @@
 
 .scrollbar__input {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0);
-  background-image: linear-gradient($color-slider-line, $color-slider-line);
+  background-color: $color-primary;
+  //background-image: linear-gradient($color-slider-line, $color-slider-line);
   //background-size: 0% 100%;
   background-repeat: no-repeat;
   -webkit-appearance: none; /* отключения стандартной расскраски */
   height: 6px;
   width: 100%;
   border-radius: 4px;
-  cursor: pointer;
+  //cursor: pointer;
+  pointer-events: none;
   &_min {
     //top: 0px;
     //left: 0px;
@@ -31,7 +32,7 @@
 
 .scrollbar__input::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  background-color: $color-slider-hover;
+  //background-color: $color-slider-hover;
 }
 
 .scrollbar__input::-webkit-slider-thumb {
@@ -41,6 +42,7 @@
   border-radius: 50%;
   background: $color-slider;
   cursor: pointer;
+  pointer-events: all;
   transition: 0.3s;
 }
 

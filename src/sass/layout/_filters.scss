@@ -17,17 +17,17 @@
   font-weight: 700;
   margin-top: 5px;
   margin-bottom: 0px;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.7;
-  }
+  //cursor: pointer;
+  // &:hover {
+  //   opacity: 0.7;
+  // }
 }
 
 .filter__wrapper_subtitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .filter__arrow {
@@ -65,6 +65,21 @@
   font-weight: 300;
   margin-top: 5px;
   margin-bottom: 0px;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 150px;
+  padding-right: 3px;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #fbf8ec; /* цвет зоны отслеживания */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-primary; /* цвет бегунка */
+    border-radius: 20px; /* округлось бегунка */
+    border: 1px solid #fbf8ec; /* отступ вокруг бегунка */
+  }
 }
 
 .filters__item {
@@ -72,7 +87,13 @@
   justify-content: space-between;
   &_disaibled {
     opacity: 0.5;
-    cursor: none;
-    pointer-events: none;
   }
+}
+.filters__checkbox {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.filters__label {
+  cursor: pointer;
 }

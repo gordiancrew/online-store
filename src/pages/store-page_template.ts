@@ -9,7 +9,7 @@ export const templateStoryPage = `
           <div class="filters__wrapper-category">
             <div class="filter__wrapper_subtitle">
               <p class="filters__subtitle">Category</p>
-              <div class="filter__arrow"></div>
+              <!-- <div class="filter__arrow"></div> -->
             </div>
             <ul class="filters__wrapper-list">
               <li class="filters__item">
@@ -31,7 +31,7 @@ export const templateStoryPage = `
           <div class="filters__wrapper-category">
             <div class="filter__wrapper_subtitle">
               <p class="filters__subtitle">Brand</p>
-              <div class="filter__arrow"></div>
+              <!--  <div class="filter__arrow"></div> -->
             </div>
             <ul class="filters__wrapper-list">
               <li class="filters__item">
@@ -60,8 +60,8 @@ export const templateStoryPage = `
                 </div>
                 <div class="scrollbar__wrapper-line">
                   <div class="scrollbar__line"></div>
-                  <input class="scrollbar__input scrollbar__input_min" type="range" min="10" max="2000" value="800" step="10" style="background-size: 40% 100%"></input>
-                  <input class="scrollbar__input scrollbar__input_max" type="range" min="10" max="2000" value="1600" step="10" style="background-size: 20% 100%"></input>
+                  <input class="scrollbar__input scrollbar__input_min" type="range" min="0" max="100" value="0" step="1" ></input>
+                  <input class="scrollbar__input scrollbar__input_max" type="range" min="0" max="100" value="100" step="1" ></input>
                 </div>                
               </div>
             </div>
@@ -76,8 +76,8 @@ export const templateStoryPage = `
                 </div>
                 <div class="scrollbar__wrapper-line">
                   <div class="scrollbar__line"></div>
-                  <input class="scrollbar__input scrollbar__input_min" type="range" min="10" max="2000" value="800" step="10" style="background-size: 40% 100%"></input>
-                  <input class="scrollbar__input scrollbar__input_max" type="range" min="10" max="2000" value="1600" step="10" style="background-size: 20% 100%"></input>
+                  <input class="scrollbar__input scrollbar__input_min" type="range" min="0" max="100" value="0" step="1"></input>
+                  <input class="scrollbar__input scrollbar__input_max" type="range" min="0" max="100" value="100" step="1"></input>
                 </div>                
               </div>
             </div>
