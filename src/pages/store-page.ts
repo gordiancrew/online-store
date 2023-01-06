@@ -1,4 +1,4 @@
-import { IProductFilter } from './../types/product.interface';
+import { IProductFilter, IProduct } from './../types/product.interface';
 import templateStorePage from './store-page_template';
 import filterProperty from '../filter-object/filter-object';
 import Filter from './../components/filter/filter';
@@ -57,22 +57,22 @@ export const storePage = {
 
     function drawProdCart(product: IProduct) {
       //draw new product card and append it to product list
-      let prod = document.createElement('div');
+      const prod = document.createElement('div');
       prod.classList.add('product');
 
-      let prodWrapperTitle = document.createElement('div');
+      const prodWrapperTitle = document.createElement('div');
       prodWrapperTitle.classList.add('product__wrapper-title');
-      let prodTittle = document.createElement('div');
+      const prodTittle = document.createElement('div');
       prodTittle.innerText = product.title;
 
-      let prodWrapperCategory = document.createElement('div');
+      const prodWrapperCategory = document.createElement('div');
       prodWrapperCategory.classList.add('product__wrapper-category');
       prodTittle.classList.add('product__title');
 
-      let prodCategory = document.createElement('div');
+      const prodCategory = document.createElement('div');
       prodCategory.classList.add('product__category');
       prodCategory.innerText = product.category;
-      let prodBrend = document.createElement('div');
+      const prodBrend = document.createElement('div');
       prodBrend.classList.add('product__brand');
       prodBrend.innerText = product.brand;
       prodWrapperCategory.appendChild(prodCategory);
@@ -81,9 +81,9 @@ export const storePage = {
       prodWrapperTitle.appendChild(prodWrapperCategory);
       prod.appendChild(prodWrapperTitle);
 
-      let prodImg = document.createElement('div');
+      const prodImg = document.createElement('div');
       prodImg.classList.add('product__wrapper-img');
-      let img = document.createElement('img');
+      const img = document.createElement('img');
       img.src = product.images[0];
       prodImg.appendChild(img);
       prod.appendChild(prodImg);
