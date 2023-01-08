@@ -22,6 +22,7 @@ export interface IProduct {
   images: string[];
   category: string;
   stock: number;
+  amount:null|number;
 }
 
 export interface IProductSource {
