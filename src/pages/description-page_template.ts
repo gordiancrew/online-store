@@ -103,8 +103,8 @@ export const templateDescriptionPage = `
             <div class="description__price">
               570$
             </div>
-            <button class="description__button">
-              DROP FROM CART
+            <button class="description__button btn-add">
+              ADD TO CART
             </button>
 
             <button class="description__button">

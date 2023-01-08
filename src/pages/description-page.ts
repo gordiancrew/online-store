@@ -53,6 +53,31 @@ export const descriptionPage = {
       itemImg.onclick = function () {
         mainPhoto.src = itemImg.src;
       };
+      let cartProducts: Array<IProduct> = JSON.parse(localStorage.cartProducts);
+      const btnAdd = document.querySelector('.btn-add') as HTMLElement;
+      if (((cartProducts.filter((y)=>y.id==id).length)>0)){
+        btnAdd.classList.add('btn-reserv');
+        btnAdd.innerText="DROP FROM CART"
+      }
+      btnAdd.onclick=function(){
+        if (((cartProducts.filter((y)=>y.id==id).length)>0)) {
+          console.log('remove press');
+           cartProducts.filter((y)=>y.id==id)[0].amount=null;
+           cartProducts=cartProducts.filter((x)=>x.amount);
+           localStorage.cartProducts = JSON.stringify(cartProducts);
+           btnAdd.classList.remove('btn-reserv');
+           btnAdd.innerText="ADD TO CARD"
+        }
+        else{
+          prod.amount = 1;
+              cartProducts.push(prod);
+              localStorage.cartProducts = JSON.stringify(cartProducts);
+              console.log('add press');
+              btnAdd.classList.add('btn-reserv');
+              btnAdd.innerText="DROP FROM CART"
+        }
+      }
+  
     });
   },
   renderNotFound() {
