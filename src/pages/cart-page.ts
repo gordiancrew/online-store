@@ -5,9 +5,11 @@ export const cartPage = {
   template: templateCartPage,
   render: function () {
     (document.querySelector('.main') as HTMLDivElement).innerHTML = this.template;
+    this.renderProductsCart();
   },
 
-  renderProductsCart: function (products:Array<IProduct>) {
+  renderProductsCart: function () {
+    let products: Array<IProduct> = JSON.parse(localStorage.cartProducts).filter((x: IProduct) => x.amount);
     const cartList = document.querySelector('.cart-list');
     cartList ? (cartList.innerHTML = '') : cartList;
     products.forEach((prod, i) => drawProd((i + 1).toString(), prod));
@@ -80,6 +82,20 @@ export const cartPage = {
       const cartItemPointRight = document.createElement('div');
       cartItemPointRight.classList.add('cart-item__point');
       cartItemPointRight.innerText = '+';
+      
+
+
+      let cartProducts: Array<IProduct> = JSON.parse(localStorage.cartProducts);
+      cartItemPointLeft.onclick = function () {
+        if (cartProducts.filter((y) => y.id == product.id)[0].amount == 1) {
+          cartProducts.filter((y) => y.id == product.id)[0].amount = null;
+          cartProducts = cartProducts.filter((x) => x.amount);
+          localStorage.cartProducts = JSON.stringify(cartProducts);
+          cartItemNumbers.innerText = '0';
+        }
+      };
+
+     
       const cartItemPrice = document.createElement('div');
       cartItemPrice.classList.add('cart-item__price');
       cartItemPrice.innerText = '$: ' + product.price.toString();

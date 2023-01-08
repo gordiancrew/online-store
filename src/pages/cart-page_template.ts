@@ -5,9 +5,7 @@ export const templateCartPage = `
           <div class="cart-page__title">
             Products In Card
           </div>
-          <div>
-            items:3
-          </div>
+          
           <div class="cart-item__page">
             page :
             <div class="cart-item__point">
@@ -39,7 +37,7 @@ export const templateCartPage = `
               </div>
               <div class="cart-item__count-number">
                 <div class="cart-item__point"> -</div>
-                <div>1</div>
+                <div class="count">1</div>
                 <div class="cart-item__point">+</div>
               </div>
               <ddiv class="cart-item__price">
