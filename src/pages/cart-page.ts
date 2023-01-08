@@ -7,16 +7,7 @@ export const cartPage = {
     (document.querySelector('.main') as HTMLDivElement).innerHTML = this.template;
   },
 
-  renderProductsCart: function (arrId: Array<string>) {
-    const dataProducts = JSON.parse(localStorage.dataProducts);
-    let products: Array<IProduct> = [];
-    arrId.forEach((id) => {
-      dataProducts.forEach((x: IProduct) => {
-        if (x.id == id) {
-          products.push(x);
-        }
-      });
-    });
+  renderProductsCart: function (products:Array<IProduct>) {
     const cartList = document.querySelector('.cart-list');
     cartList ? (cartList.innerHTML = '') : cartList;
     products.forEach((prod, i) => drawProd((i + 1).toString(), prod));
@@ -25,7 +16,7 @@ export const cartPage = {
     const sumPrice = document.querySelector('.sum-price') as HTMLDivElement;
     let sumP = 0;
     products.forEach((p) => (sumP += p.price));
-    sumPrice.textContent = sumP.toString()+'$';
+    sumPrice.textContent = sumP.toString() + '$';
 
     function drawProd(index: string, product: IProduct) {
       const cartItem = document.createElement('div');
