@@ -5,21 +5,21 @@ export const templateDescriptionPage = `
         STORE
       </div>
       >>
-      <div class="chit">
+      <div class="chit chit-category">
         SMARTPHONES
       </div>
       >>
-      <div class="chit">
+      <div class="chit chit-brand">
         APPLE
       </div>
       >>
-      <div class="chit">
+      <div class="chit chit-title">
         IPHONE9
       </div>
     </div>
     <div class="cart-page__wrapper tile">
         <div class="description__title">
-          <div class="cart-page__title">
+          <div class="cart-page__title description-title">
             IPhone  9
           </div> 
         </div>
@@ -47,7 +47,7 @@ export const templateDescriptionPage = `
               <div class="description__item-title">
                 Description:
               </div>             
-              <div class="description__item-value">
+              <div class="description__item-value description-description">
                 Some description
               </div>
             </div>
@@ -55,7 +55,7 @@ export const templateDescriptionPage = `
               <div class="description__item-title">
                 Discount:
               </div>           
-              <div class="description__item-value">
+              <div class="description__item-value description-discount">
                 12.69
               </div>
             </div>
@@ -64,7 +64,7 @@ export const templateDescriptionPage = `
                 Rating:
               </div>
             
-              <div class="description__item-value">
+              <div class="description__item-value description-rating">
                 4.69
               </div>
             </div>
@@ -74,7 +74,7 @@ export const templateDescriptionPage = `
                 Stock:
               </div>
             
-              <div class="description__item-value">
+              <div class="description__item-value description-stock">
                 94
               </div>
             </div>
@@ -84,7 +84,7 @@ export const templateDescriptionPage = `
                 Brand:
               </div>
             
-              <div class="description__item-value">
+              <div class="description__item-value description-brand">
                 Apple
               </div>
             </div>
@@ -94,7 +94,7 @@ export const templateDescriptionPage = `
                 Category:
               </div>
             
-              <div class="description__item-value">
+              <div class="description__item-value description-category">
                 Smartphones
               </div>
             </div>       
