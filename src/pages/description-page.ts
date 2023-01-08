@@ -4,24 +4,23 @@ import templateDescriptionPage from './description-page_template';
 export const descriptionPage = {
   template: templateDescriptionPage,
   render: function (id: string) {
-    console.log(id);
     (document.querySelector('.main') as HTMLDivElement).innerHTML = this.template;
     this.renderDescription(id);
   },
   renderProdNotFound() {
     console.log('prod not found');
-    //TODO
+    (document.querySelector('.main') as HTMLDivElement).innerHTML = this.template;
+    this.renderNotFound();
   },
 
   renderDescription(id: string) {
     const prod: IProduct = JSON.parse(localStorage.dataProducts).filter((x: IProduct) => x.id == id)[0];
-
-    const chitCategory=document.querySelector('.chit-category');
-    chitCategory?chitCategory.textContent=prod.category:'';
-    const chitBrand=document.querySelector('.chit-brand');
-    chitBrand?chitBrand.textContent=prod.brand:'';
-    const chitTitle=document.querySelector('.chit-title');
-    chitTitle?chitTitle.textContent=prod.title:'';
+    const chitCategory = document.querySelector('.chit-category');
+    chitCategory ? (chitCategory.textContent = prod.category) : '';
+    const chitBrand = document.querySelector('.chit-brand');
+    chitBrand ? (chitBrand.textContent = prod.brand) : '';
+    const chitTitle = document.querySelector('.chit-title');
+    chitTitle ? (chitTitle.textContent = prod.title) : '';
     const descriptionTitle = document.querySelector('.description-title');
     descriptionTitle ? (descriptionTitle.textContent = prod.title) : '';
     const descriptionDescription = document.querySelector('.description-description');
@@ -40,9 +39,9 @@ export const descriptionPage = {
     descriptionPrice ? (descriptionPrice.textContent = prod.price.toString()) : '';
 
     const photoItems = document.querySelector('.description__photo-items');
-    photoItems?photoItems.innerHTML='':'';
-    let mainPhoto=document.querySelector('.description__photo-img') as HTMLImageElement;
-    mainPhoto.src=prod.images[0];
+    photoItems ? (photoItems.innerHTML = '') : '';
+    let mainPhoto = document.querySelector('.description__photo-img') as HTMLImageElement;
+    mainPhoto.src = prod.images[0];
     prod.images.forEach((x) => {
       const itemWraper = document.createElement('div');
       itemWraper.classList.add('description__photo-item-wrapper');
@@ -51,10 +50,21 @@ export const descriptionPage = {
       itemImg.src = x;
       itemWraper.appendChild(itemImg);
       photoItems?.appendChild(itemWraper);
-      itemImg.onclick=function(){
-        mainPhoto.src=itemImg.src;
-      }
+      itemImg.onclick = function () {
+        mainPhoto.src = itemImg.src;
+      };
     });
+  },
+  renderNotFound() {
+    const chits = document.querySelector('.description__chits') as HTMLElement;
+    chits.innerHTML = '';
+    const wrapper = document.querySelector('.cart-page__wrapper') as HTMLElement;
+    wrapper ? (wrapper.innerHTML = '') : '';
+    const content = document.createElement('div');
+    content.classList.add('description__not-found');
+    content.classList.add('tile');
+    content.textContent = 'Product not found...';
+    wrapper.appendChild(content);
   },
 };
 

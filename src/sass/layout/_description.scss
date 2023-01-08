@@ -134,3 +134,12 @@
 .description__button:hover{
     background-color: rgb(19, 160, 160);  
 }
+
+.description__not-found{
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: bisque;
+}
