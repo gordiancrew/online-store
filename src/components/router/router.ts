@@ -1,49 +1,57 @@
-import appConstants from '../../common/constant';
+import { IProduct } from '../../types/product.interface';
 import Route from 'route-parser';
 import page404 from '../../pages/page404';
 import storyPage from '../../pages/store-page';
 import cartPage from '../../pages/cart-page';
 import descriptionPage from '../../pages/description-page';
 
-export const routes = {
-  Main: new Route(appConstants.routes.index),
-  Cart: new Route(appConstants.routes.cart),
-  Description: new Route(appConstants.routes.description),
-};
-
-export const render = (path: string) => {
-  if (routes.Main.match(path)) {
-    storyPage.render();
-    return;
-  } else if (routes.Cart.match(path)) {
-    cartPage.render();
-    return;
-  } else if (routes.Description.match(path)) {
-    descriptionPage.render();
-    return;
+export class Router {
+  routes: { name: string; route: Route }[];
+  constructor() {
+    this.routes = [
+      { name: '/', route: new Route('/') },
+      { name: '/cart', route: new Route('/cart') },
+    ];
+    const dataProducts = JSON.parse(localStorage.dataProducts);
+    dataProducts.forEach((item: IProduct) => {
+      this.routes.push({ name: `${item.id}`, route: new Route(`/description/${item.id}`) });
+    });
   }
-  page404.render();
-};
+  render(path: string) {
+    let prodNotFound = true;
+    if (this.routes[0].route.match(path)) {
+      storyPage.render();
+      return;
+    } else if (this.routes[1].route.match(path)) {
+      cartPage.render();
+      return;
+    }
+    this.routes.forEach((elem) => {
+      if (elem.route.match(path)) {
+        descriptionPage.render(elem.name);
+        prodNotFound = false;
+        return;
+      }
+    });
+    if (prodNotFound) {
+      if (path.match(/\/description\//)) {
+        descriptionPage.renderProdNotFound();
+        return;
+      } else {
+        page404.render();
+      }
+    }
+  }
+  goTo(path: string) {
+    window.history.pushState({ path }, path, path);
+    this.render(path);
+  }
+  initRouter() {
+    window.addEventListener('popstate', () => {
+      this.render(new URL(window.location.href).pathname);
+    });
+    this.render(new URL(window.location.href).pathname);
+  }
+}
 
-export const goTo = (path: string) => {
-  window.history.pushState({ path }, path, path);
-  render(path);
-};
-
-const initRouter = () => {
-  window.addEventListener('popstate', () => {
-    render(new URL(window.location.href).pathname);
-  });
-  // document.querySelectorAll('.navList__navLink').forEach((el) => {
-  //   el.addEventListener('click', (env) => {
-  //     env.preventDefault();
-  //     if (env.target) {
-  //       const { pathname: path } = new URL((env.target as HTMLLinkElement).href);
-  //       goTo(path);
-  //     }
-  //   });
-  // });
-  render(new URL(window.location.href).pathname);
-};
-
-export default initRouter;
+export default Router;
