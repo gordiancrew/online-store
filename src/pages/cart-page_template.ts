@@ -57,7 +57,7 @@ export const templateCartPage = `
           <div class="cart-summary__key">
             Products:
           </div>
-          <div class="cart-summary__value">
+          <div class="cart-summary__value product-len">
             2
           </div>
         </div>
@@ -65,7 +65,7 @@ export const templateCartPage = `
           <div class="cart-summary__key">
             Total:
           </div>
-          <div class="cart-summary__value">
+          <div class="cart-summary__value sum-price">
             1500$
           </div>
         </div>

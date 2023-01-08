@@ -12,7 +12,7 @@ class Loader {
   }
 
   load(method: string, callback: (data: IProducts) => void): void {
-    fetch('https://dummyjson.com/products', { method })
+    fetch('https://dummyjson.com/products?limit=100', { method })
       .then(this.errorHandler)
       .then((res2) => res2.json())
       .then((data: IProducts) => callback(data))
