@@ -6,9 +6,17 @@
     padding: 10px 10px 10px 10px;
     gap: 20px;
     width: 60v;
+    position: relative;
+}
+.cart-empty{
+    position: absolute;
+   top: 100px;
+
 }
 
+
 .cart-list__title {
+    position: relative;
     display: flex;
     
     justify-content: space-between;
