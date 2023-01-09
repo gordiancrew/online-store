@@ -5,13 +5,8 @@ export const templateCartPage = `
           <div class="cart-page__title">
             Products In Card
           </div>
-          
-          <div class="cart-item__page">
-            page :
-            <div class="cart-item__point">
-              ← </div> 1
-            <div class="cart-item__point">→</div>
-          </div>
+          <div class="cart-empty">Cart is empty...</div>
+        
         </div>
         <div class="cart-list">
           <div class="cart-item tile">

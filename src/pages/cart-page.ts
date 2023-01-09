@@ -18,7 +18,7 @@ export const cartPage = {
     productsLength ? (productsLength.textContent = products.length.toString()) : '0';
     const sumPrice = document.querySelector('.sum-price') as HTMLDivElement;
     let sumP = 0;
-    products.forEach((p) => (sumP += p.price));
+    products.forEach((p) => (sumP += p.amount?(p.price*p.amount!):p.price));
     sumPrice.textContent = sumP.toString() + '$';
 
     function drawProd(index: string, product: IProduct) {
@@ -79,7 +79,7 @@ export const cartPage = {
       cartItemPointLeft.classList.add('cart-item__point');
       cartItemPointLeft.innerText = '-';
       const cartItemNumbers = document.createElement('div');
-      cartItemNumbers.innerText = '1';
+      cartItemNumbers.innerText = product.amount ? product.amount.toString() : '';
       const cartItemPointRight = document.createElement('div');
       cartItemPointRight.classList.add('cart-item__point');
       cartItemPointRight.innerText = '+';
@@ -91,8 +91,22 @@ export const cartPage = {
           cartProducts.filter((y) => y.id == product.id)[0].amount = null;
           cartProducts = cartProducts.filter((x) => x.amount);
           localStorage.cartProducts = JSON.stringify(cartProducts);
-          cartItemNumbers.innerText = '0';
+          // cartItemNumbers.innerText = '0';
+        } else {
+          cartProducts.filter((y) => y.id == product.id)[0].amount!--;
+          localStorage.cartProducts = JSON.stringify(cartProducts);
         }
+        cartPage.render();
+        header.render();
+      };
+
+      cartItemPointRight.onclick = function () {
+        const header = new Header();
+        let num = cartProducts.filter((y) => y.id == product.id)[0].amount;
+        num ? num++ : num;
+        cartProducts.filter((y) => y.id == product.id)[0].amount = num;
+        localStorage.cartProducts = JSON.stringify(cartProducts);
+        cartPage.render();
         header.render();
       };
 
