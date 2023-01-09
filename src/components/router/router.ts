@@ -8,6 +8,8 @@ import descriptionPage from '../../pages/description-page';
 export class Router {
   routes: { name: string; route: Route }[];
   constructor() {
+    const cartLink = document.querySelector('.header__cart') as HTMLDivElement;
+    const logoLink = document.querySelector('.icon_logo') as HTMLSpanElement;
     this.routes = [
       { name: '/', route: new Route('/') },
       { name: '/cart', route: new Route('/cart') },
@@ -15,6 +17,14 @@ export class Router {
     const dataProducts = JSON.parse(localStorage.dataProducts);
     dataProducts.forEach((item: IProduct) => {
       this.routes.push({ name: `${item.id}`, route: new Route(`/description/${item.id}`) });
+    });
+    cartLink.addEventListener('click', () => {
+      window.history.pushState({}, '/cart', '/cart');
+      cartPage.render();
+    });
+    logoLink.addEventListener('click', () => {
+      window.history.pushState({}, '/', '/');
+      storyPage.render();
     });
   }
   render(path: string) {
