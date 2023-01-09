@@ -2,12 +2,23 @@ import { IProductFilter, IProduct } from './../types/product.interface';
 import templateStorePage from './store-page_template';
 import filterProperty from '../filter-object/filter-object';
 import Filter from './../components/filter/filter';
+import descriptionPage from '../pages/description-page';
+import Header from '../components/header/header';
+import Sort from '../components/sort/sort';
 
 export const storePage = {
   template: templateStorePage,
   render: function () {
     (document.querySelector('.main') as HTMLDivElement).innerHTML = this.template;
     this.renderFilter(filterProperty);
+    let arrProducts: IProduct[] = [];
+
+    if (localStorage.getItem('dataProducts') !== null) {
+      arrProducts = JSON.parse(localStorage.dataProducts);
+    } else {
+      //const arrProducts = [];
+    }
+    this.renderProducts(arrProducts);
   },
 
   renderFilter: function (filterProperty: IProductFilter) {
@@ -84,6 +95,7 @@ export const storePage = {
       const prodImg = document.createElement('div');
       prodImg.classList.add('product__wrapper-img');
       const img = document.createElement('img');
+      img.classList.add('product__img');
       img.src = product.images[0];
       prodImg.appendChild(img);
       prod.appendChild(prodImg);
@@ -100,10 +112,10 @@ export const storePage = {
       prodWrapperRating.appendChild(prodDiscont);
       prod.appendChild(prodWrapperRating);
 
-      const prodDescription = document.createElement('div');
-      prodDescription.classList.add('product__description');
-      prodDescription.innerText = product.description;
-      prod.appendChild(prodDescription);
+      //const prodDescription = document.createElement('div');
+      //prodDescription.classList.add('product__description');
+      //prodDescription.innerText = product.description;
+      //prod.appendChild(prodDescription);
 
       const prodWrapperPrice = document.createElement('div');
       prodWrapperPrice.classList.add('product__wrapper-price');
@@ -112,6 +124,15 @@ export const storePage = {
       prodPrice.innerText = product.price.toString();
       const prodAdd = document.createElement('div');
       prodAdd.classList.add('product__add');
+      if (localStorage.getItem('cartProducts') !== null) {
+        const cart = JSON.parse(localStorage.cartProducts);
+        cart.forEach((elem: IProduct) => {
+          if (elem.id === product.id) {
+            prodAdd.classList.add('product__add_remove');
+          }
+        });
+      }
+
       prodWrapperPrice.appendChild(prodPrice);
       prodWrapperPrice.appendChild(prodAdd);
       prod.appendChild(prodWrapperPrice);
@@ -125,7 +146,40 @@ export const storePage = {
       prod.appendChild(prodWrapperStock);
 
       listProd?.appendChild(prod);
+      prod.addEventListener('click', (event) => {
+        if (
+          (event.target as HTMLDivElement).className !== 'product__add' &&
+          (event.target as HTMLDivElement).className !== 'product__add product__add_remove'
+        ) {
+          window.history.pushState({}, `/description/${product.id}`, `/description/${product.id}`);
+          descriptionPage.render(`${product.id}`);
+        } else {
+          let cart: IProduct[] = [];
+          let hasProduct = false;
+          if (localStorage.getItem('cartProducts') !== null) {
+            cart = JSON.parse(localStorage.cartProducts);
+          }
+          cart.forEach((elem, ind) => {
+            if (elem.id === product.id) {
+              (prodAdd as HTMLDivElement).classList.remove('product__add_remove');
+              cart.splice(ind, 1);
+              hasProduct = true;
+            }
+          });
+          if (!hasProduct) {
+            (prodAdd as HTMLDivElement).classList.add('product__add_remove');
+            product.amount = 1;
+            cart.push(product);
+          }
+          localStorage.setItem('cartProducts', JSON.stringify(cart));
+          const header = new Header();
+          header.render();
+        }
+      });
     }
+    const sort = new Sort();
+    sort.setFound(products.length);
+    sort.render();
   },
 };
 
