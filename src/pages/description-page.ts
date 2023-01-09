@@ -1,5 +1,6 @@
 import { IProduct } from '../types/product.interface';
 import templateDescriptionPage from './description-page_template';
+import Header from '../components/header/header';
 
 export const descriptionPage = {
   template: templateDescriptionPage,
@@ -40,7 +41,7 @@ export const descriptionPage = {
 
     const photoItems = document.querySelector('.description__photo-items');
     photoItems ? (photoItems.innerHTML = '') : '';
-    let mainPhoto = document.querySelector('.description__photo-img') as HTMLImageElement;
+    const mainPhoto = document.querySelector('.description__photo-img') as HTMLImageElement;
     mainPhoto.src = prod.images[0];
     prod.images.forEach((x) => {
       const itemWraper = document.createElement('div');
@@ -55,29 +56,29 @@ export const descriptionPage = {
       };
       let cartProducts: Array<IProduct> = JSON.parse(localStorage.cartProducts);
       const btnAdd = document.querySelector('.btn-add') as HTMLElement;
-      if (((cartProducts.filter((y)=>y.id==id).length)>0)){
+      if (cartProducts.filter((y) => y.id == id).length > 0) {
         btnAdd.classList.add('btn-reserv');
-        btnAdd.innerText="DROP FROM CART"
+        btnAdd.innerText = 'DROP FROM CART';
       }
-      btnAdd.onclick=function(){
-        if (((cartProducts.filter((y)=>y.id==id).length)>0)) {
+      btnAdd.onclick = function () {
+        const header = new Header();
+        if (cartProducts.filter((y) => y.id == id).length > 0) {
           console.log('remove press');
-           cartProducts.filter((y)=>y.id==id)[0].amount=null;
-           cartProducts=cartProducts.filter((x)=>x.amount);
-           localStorage.cartProducts = JSON.stringify(cartProducts);
-           btnAdd.classList.remove('btn-reserv');
-           btnAdd.innerText="ADD TO CARD"
-        }
-        else{
+          cartProducts.filter((y) => y.id == id)[0].amount = null;
+          cartProducts = cartProducts.filter((x) => x.amount);
+          localStorage.cartProducts = JSON.stringify(cartProducts);
+          btnAdd.classList.remove('btn-reserv');
+          btnAdd.innerText = 'ADD TO CARD';
+        } else {
           prod.amount = 1;
-              cartProducts.push(prod);
-              localStorage.cartProducts = JSON.stringify(cartProducts);
-              console.log('add press');
-              btnAdd.classList.add('btn-reserv');
-              btnAdd.innerText="DROP FROM CART"
+          cartProducts.push(prod);
+          localStorage.cartProducts = JSON.stringify(cartProducts);
+          console.log('add press');
+          btnAdd.classList.add('btn-reserv');
+          btnAdd.innerText = 'DROP FROM CART';
         }
-      }
-  
+        header.render();
+      };
     });
   },
   renderNotFound() {
