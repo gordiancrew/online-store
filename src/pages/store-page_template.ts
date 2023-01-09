@@ -90,7 +90,7 @@ export const templateStoryPage = `
               <option value="Price-ASC">Sort by price ASC</option>
               <option value="Price-DESC">Sort by price DESC</option>
             </select>
-            <div class="sort__found">Found: <span class="sort__amount">100</span></div>
+            <div class="sort__found">Found: <span class="sort__amount">0</span></div>
             <input type="search" name="search" id="search" class="sort__search" placeholder="Search product">
             <div class="wrapper__sort">
               <div class="icon icon_grid"></div>
@@ -98,30 +98,6 @@ export const templateStoryPage = `
             </div>
           </div>
           <div class="list-products tile">
-            <div class="product">
-              <div class="product__wrapper-title">
-                <div class="product__title">iPhone 9</div>
-                <div class="product__wrapper-category">
-                  <div class="product__category">smartphones</div>
-                  <div class="product__brand">Apple</div>
-                </div>                
-              </div>
-              <div class="product__wrapper-img">
-                <img class="product__img" src="https://i.dummyjson.com/data/products/1/1.jpg", alt="photo">
-              </div>
-              <div class="product__wrapper-rating">
-                <div class="product__rating">4.69</div>
-                <div class="product__discount">12.96</div>
-              </div>
-              <div class="product__description">An apple mobile which is nothing like apple</div>
-              <div class="product__wrapper-price">
-                <div class="product__price">549</div>
-                <div class="product__add"></div>
-              </div>              
-              <div class="product__wrapper-stock">
-                <div class="product__stock">94</div>
-              </div>              
-            </div>
           </div>
         </div>        
       </div>
