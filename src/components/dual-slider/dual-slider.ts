@@ -78,6 +78,24 @@ export class DualSlider {
     inputMax.max = `${this.max}`;
     inputMax.value = `${this.currentMax}`;
   }
+
+  setValue(currentMin: number, currentMax: number) {
+    const textMin = document.querySelectorAll('.scrollbar__text_min')[this.i];
+    const textMax = document.querySelectorAll('.scrollbar__text_max')[this.i];
+    const inputMin = document.querySelectorAll('.scrollbar__input_min')[this.i] as HTMLInputElement;
+    const inputMax = document.querySelectorAll('.scrollbar__input_max')[this.i] as HTMLInputElement;
+    if (currentMin === -1) {
+      textMin.textContent = `Products not found`;
+      textMax.textContent = ``;
+    } else {
+      this.currentMin = currentMin;
+      this.currentMax = currentMax;
+      textMin.textContent = `${this.currentMin}`;
+      textMax.textContent = `${this.currentMax}`;
+      inputMin.value = `${this.currentMin}`;
+      inputMax.value = `${this.currentMax}`;
+    }
+  }
 }
 
 export default DualSlider;

@@ -87,8 +87,10 @@ export const templateStoryPage = `
           <div class="sort tile">
             <select name="sort__select" id="sort" class="sort__selector">
               <option value="sort-title" disabled selected class="sort__option">Sort options</option>
-              <option value="Price-ASC">Sort by price ASC</option>
-              <option value="Price-DESC">Sort by price DESC</option>
+              <option value="price-asc">Sort by price ASC</option>
+              <option value="price-desc">Sort by price DESC</option>
+              <option value="raiting-asc">Sort by raiting ASC</option>
+              <option value="raiting-desc">Sort by raiting DESC</option>
             </select>
             <div class="sort__found">Found: <span class="sort__amount">0</span></div>
             <input type="search" name="search" id="search" class="sort__search" placeholder="Search product">

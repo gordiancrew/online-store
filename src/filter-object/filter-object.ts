@@ -5,7 +5,7 @@ export const filterProperty: IProductFilter = {
     { name: 'laptops', current: 0, max: 5 },
     { name: 'fragrances', current: 0, max: 5 },
     { name: 'skincare', current: 0, max: 5 },
-    { name: 'grocerie', current: 0, max: 5 },
+    { name: 'groceries', current: 0, max: 5 },
     { name: 'home-decoration', current: 0, max: 5 },
     { name: 'furniture', current: 0, max: 5 },
     { name: 'tops', current: 0, max: 5 },
