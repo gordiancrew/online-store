@@ -8,12 +8,13 @@
 }
 
 .wrapper__sort {
-  display: flex;
+  display: none;
   gap: 10px;
   flex-shrink: 0;
 }
 
 .sort__search {
+  display: none;
   position: relative;
   background-color: transparent;
   border: 1px solid #929699;

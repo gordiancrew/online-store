@@ -11,14 +11,30 @@ export const storePage = {
   render: function () {
     (document.querySelector('.main') as HTMLDivElement).innerHTML = this.template;
     this.renderFilter(filterProperty);
-    let arrProducts: IProduct[] = [];
+    this.renderSort();
+    this.renderProducts();
+  },
 
-    if (localStorage.getItem('dataProducts') !== null) {
-      arrProducts = JSON.parse(localStorage.dataProducts);
-    } else {
-      //const arrProducts = [];
-    }
-    this.renderProducts(arrProducts);
+  renderSort: function () {
+    const select = document.querySelector('.sort__selector') as HTMLSelectElement;
+    select.addEventListener('change', () => {
+      const url = new URL(window.location.href);
+      const urlParam = url.searchParams;
+      if (select.value === 'price-asc') {
+        urlParam.set('sort', 'price-asc');
+      }
+      if (select.value === 'price-desc') {
+        urlParam.set('sort', 'price-desc');
+      }
+      if (select.value === 'raiting-asc') {
+        urlParam.set('sort', 'raiting-asc');
+      }
+      if (select.value === 'raiting-desc') {
+        urlParam.set('sort', 'raiting-desc');
+      }
+      window.history.pushState({}, url.href, url.href);
+      this.renderProducts();
+    });
   },
 
   renderFilter: function (filterProperty: IProductFilter) {
@@ -27,11 +43,16 @@ export const storePage = {
     const resetFilters = document.querySelector('.filters__link_reset');
     const copyLink = document.querySelector('.filters__link_copy');
     const filter = new Filter(filterProperty);
+    filter.calculateFilters();
+    filter.filterProducts();
     wrapper.forEach((elem) => {
       elem.addEventListener('click', (event) => {
         if ((event.target as HTMLDivElement).tagName === 'INPUT') {
           filter.setCheckbox();
           filter.setSearchParameters();
+          filter.filterProducts();
+          filter.calculateFilters();
+          this.renderProducts();
           //filter.saveLocalStorage();
         }
       });
@@ -40,6 +61,9 @@ export const storePage = {
       elem.addEventListener('click', () => {
         filter.setSliders();
         filter.setSearchParameters();
+        filter.filterProducts();
+        filter.calculateFilters();
+        this.renderProducts();
         //filter.saveLocalStorage();
       });
     });
@@ -52,19 +76,36 @@ export const storePage = {
     (resetFilters as HTMLDivElement).addEventListener('click', () => {
       filter.reset();
       filter.setSearchParameters();
+      filter.filterProducts();
+      filter.calculateFilters();
+      this.renderProducts();
+      const select = document.querySelector('.sort__selector') as HTMLSelectElement;
+      select.value = 'sort-title';
       //filter.saveLocalStorage();
     });
     (copyLink as HTMLDivElement).addEventListener('click', () => {
       filter.copyToBuffer();
     });
   },
-  renderProducts: function (products: Array<IProduct>) {
+  renderProducts: function () {
     const listProd = document.querySelector('.list-products') as HTMLElement;
     listProd ? (listProd.innerHTML = '') : listProd;
     //clear product list area befor new drawing
-
-    products.forEach((prod) => drawProdCart(prod));
-    //draw all elements type Product of data array
+    const sort = new Sort();
+    sort.sortProduct();
+    let products: IProduct[] = [];
+    if (localStorage.getItem('currentProducts') !== null) {
+      products = JSON.parse(localStorage.currentProducts);
+    }
+    if (products.length === 0) {
+      const title = document.createElement('div');
+      title.classList.add('product__title');
+      title.textContent = 'No products found';
+      listProd?.appendChild(title);
+    } else {
+      products.forEach((prod) => drawProdCart(prod));
+      //draw all elements type Product of data array
+    }
 
     function drawProdCart(product: IProduct) {
       //draw new product card and append it to product list
@@ -177,7 +218,7 @@ export const storePage = {
         }
       });
     }
-    const sort = new Sort();
+
     sort.setFound(products.length);
     sort.render();
   },

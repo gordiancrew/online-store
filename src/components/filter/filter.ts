@@ -1,4 +1,4 @@
-import { IProductFilter } from '../../types/product.interface';
+import { IProductFilter, IProduct } from '../../types/product.interface';
 import DualSlider from '../../components/dual-slider/dual-slider';
 import Checkboxes from '../../components/checkbox/checkboxes';
 
@@ -171,6 +171,7 @@ export class Filter {
     } else {
       urlParam.delete('stock');
     }
+    urlParam.delete('sort');
     window.history.pushState({}, url.href, url.href);
   }
   copyToBuffer() {
@@ -190,6 +191,85 @@ export class Filter {
       copyLink.textContent = 'Copy link';
       copyLink.style.color = '';
     }, 800);
+  }
+  filterProducts() {
+    let arrProducts: IProduct[] = [];
+    const arrFilterProducts: IProduct[] = [];
+    if (localStorage.getItem('dataProducts') !== null) {
+      arrProducts = JSON.parse(localStorage.dataProducts);
+    }
+    arrProducts.forEach((elem) => {
+      const urlParam = new URL(window.location.href).searchParams;
+
+      let categoryFlag = urlParam.has('category') ? false : true;
+      let brandFlag = urlParam.has('brand') ? false : true;
+      let priceFlag = urlParam.has('price') ? false : true;
+      let stockFlag = urlParam.has('stock') ? false : true;
+
+      this.property.category.forEach((elemCheckbox) => {
+        if (elemCheckbox.checked && elemCheckbox.name.toLowerCase() === elem.category.toLowerCase()) {
+          categoryFlag = true;
+        }
+      });
+      this.property.brand.forEach((elemCheckbox) => {
+        if (elemCheckbox.checked && elemCheckbox.name.toLowerCase() === elem.brand.toLowerCase()) {
+          brandFlag = true;
+        }
+      });
+      if (this.property.price.currentMin < elem.price && this.property.price.currentMax > elem.price) {
+        priceFlag = true;
+      }
+      if (this.property.stock.currentMin < elem.stock && this.property.stock.currentMax > elem.stock) {
+        stockFlag = true;
+      }
+      if (categoryFlag && brandFlag && priceFlag && stockFlag) {
+        arrFilterProducts.push(elem);
+      }
+      localStorage.setItem('currentProducts', JSON.stringify(arrFilterProducts));
+    });
+  }
+  calculateFilters() {
+    let arrFilterProducts: IProduct[] = [];
+    if (localStorage.getItem('currentProducts') !== null) {
+      arrFilterProducts = JSON.parse(localStorage.currentProducts);
+    }
+    this.property.category.forEach((elemCheckbox) => {
+      elemCheckbox.current = 0;
+      arrFilterProducts.forEach((elem) => {
+        if (elemCheckbox.name.toLowerCase() === elem.category.toLowerCase()) {
+          elemCheckbox.current++;
+        }
+      });
+    });
+    this.property.brand.forEach((elemCheckbox) => {
+      elemCheckbox.current = 0;
+      arrFilterProducts.forEach((elem) => {
+        if (elemCheckbox.name.toLowerCase() === elem.brand.toLowerCase()) {
+          elemCheckbox.current++;
+        }
+      });
+    });
+
+    // if (arrFilterProducts.length !== 0) {
+    //   this.property.price.currentMin = this.property.price.max;
+    //   this.property.price.currentMax = this.property.price.min;
+    //   arrFilterProducts.forEach((elem) => {
+    //     if (elem.price < this.property.price.currentMin) {
+    //       this.property.price.currentMin = elem.price;
+    //       console.log(this.property.price.currentMin);
+    //     }
+    //     if (elem.price > this.property.price.currentMax) {
+    //       this.property.price.currentMax = elem.price;
+    //     }
+    //   });
+    // } else {
+    //   this.property.price.currentMin = -1;
+    // }
+
+    this.checkboxesCategory.render();
+    this.checkboxesBrand.render();
+
+    //this.setSearchParameters();
   }
 }
 
