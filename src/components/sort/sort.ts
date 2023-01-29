@@ -1,4 +1,4 @@
-import { IProduct, ESort } from '../../types/product.interface';
+import { interfaceProduct, ESort } from '../../types/product.interface';
 class Sort {
   found = 0;
 
@@ -17,7 +17,7 @@ class Sort {
       const select = document.querySelector('.sort__selector') as HTMLSelectElement;
       const sort = urlParam.get('sort') as string;
       select.value = sort;
-      let arrFilterProducts: IProduct[] = [];
+      let arrFilterProducts: interfaceProduct[] = [];
       if (localStorage.getItem('currentProducts') !== null) {
         arrFilterProducts = JSON.parse(localStorage.currentProducts);
       }

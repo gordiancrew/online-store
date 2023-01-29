@@ -1,4 +1,4 @@
-import { IProduct } from '../../types/product.interface';
+import { interfaceProduct } from '../../types/product.interface';
 import Route from 'route-parser';
 import page404 from '../../pages/page404';
 import storyPage from '../../pages/store-page';
@@ -15,7 +15,7 @@ class Router {
       { name: '/cart', route: new Route('/cart') },
     ];
     const dataProducts = JSON.parse(localStorage.dataProducts);
-    dataProducts.forEach((item: IProduct) => {
+    dataProducts.forEach((item: interfaceProduct) => {
       this.routes.push({ name: `${item.id}`, route: new Route(`/description/${item.id}`) });
     });
     cartLink.addEventListener('click', () => {

@@ -1,4 +1,4 @@
-import { IProduct } from '../types/product.interface';
+import { interfaceProduct } from '../types/product.interface';
 import templateDescriptionPage from './description-page_template';
 import Header from '../components/header/header';
 
@@ -14,7 +14,7 @@ export const descriptionPage = {
   },
 
   renderDescription(id: string) {
-    const prod: IProduct = JSON.parse(localStorage.dataProducts).filter((x: IProduct) => x.id == id)[0];
+    const prod: interfaceProduct = JSON.parse(localStorage.dataProducts).filter((x: interfaceProduct) => x.id == id)[0];
     const chitCategory = document.querySelector('.chit-category');
     chitCategory ? (chitCategory.textContent = prod.category) : '';
     const chitBrand = document.querySelector('.chit-brand');
@@ -53,7 +53,7 @@ export const descriptionPage = {
       itemImg.onclick = function () {
         mainPhoto.src = itemImg.src;
       };
-      let cartProducts: Array<IProduct> = JSON.parse(localStorage.cartProducts);
+      let cartProducts: Array<interfaceProduct> = JSON.parse(localStorage.cartProducts);
       const btnAdd = document.querySelector('.btn-add') as HTMLElement;
       if (cartProducts.filter((y) => y.id == id).length > 0) {
         btnAdd.classList.add('btn-reserv');

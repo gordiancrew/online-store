@@ -1,15 +1,15 @@
-import { IProductFilter, IProduct } from '../../types/product.interface';
+import { interfaceProductFilter, interfaceProduct } from '../../types/product.interface';
 import DualSlider from '../../components/dual-slider/dual-slider';
 import Checkboxes from '../../components/checkbox/checkboxes';
 
 class Filter {
-  property: IProductFilter;
+  property: interfaceProductFilter;
   sliderPrice: DualSlider;
   sliderStock: DualSlider;
   checkboxesCategory: Checkboxes;
   checkboxesBrand: Checkboxes;
 
-  constructor(property: IProductFilter) {
+  constructor(property: interfaceProductFilter) {
     this.property = property;
 
     const urlParam = new URL(window.location.href).searchParams;
@@ -190,8 +190,8 @@ class Filter {
     }, 800);
   }
   filterProducts() {
-    let arrProducts: IProduct[] = [];
-    const arrFilterProducts: IProduct[] = [];
+    let arrProducts: interfaceProduct[] = [];
+    const arrFilterProducts: interfaceProduct[] = [];
     if (localStorage.getItem('dataProducts') !== null) {
       arrProducts = JSON.parse(localStorage.dataProducts);
     }
@@ -226,7 +226,7 @@ class Filter {
     });
   }
   calculateFilters() {
-    let arrFilterProducts: IProduct[] = [];
+    let arrFilterProducts: interfaceProduct[] = [];
     if (localStorage.getItem('currentProducts') !== null) {
       arrFilterProducts = JSON.parse(localStorage.currentProducts);
     }

@@ -1,16 +1,16 @@
-export interface IProduct {
+export interface interfaceProduct {
   id: string;
   tittle: string;
 }
-export interface IProducts {
+export interface interfaceProducts {
   filter(arg0: (_item: string, idx: number) => boolean): unknown;
   length: number;
   status: string;
   totalResults: number;
-  products: IProduct[];
+  products: interfaceProduct[];
 }
 
-export interface IProduct {
+export interface interfaceProduct {
   id: string;
   title: string;
   description: string;
@@ -25,7 +25,7 @@ export interface IProduct {
   amount: null | number;
 }
 
-export interface IProductSource {
+export interface interfaceProductSource {
   id: null | string;
   title: null | string;
 }
@@ -43,7 +43,7 @@ export interface IFilterSlider {
   max: number;
 }
 
-export interface IProductFilter {
+export interface interfaceProductFilter {
   category: IFilterCheckbox[];
   brand: IFilterCheckbox[];
   price: IFilterSlider;

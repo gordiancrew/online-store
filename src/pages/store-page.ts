@@ -1,4 +1,4 @@
-import { IProductFilter, IProduct } from './../types/product.interface';
+import { interfaceProductFilter, interfaceProduct } from './../types/product.interface';
 import templateStorePage from './store-page_template';
 import filterProperty from '../filter-object/filter-object';
 import Filter from './../components/filter/filter';
@@ -37,7 +37,7 @@ export const storePage = {
     });
   },
 
-  renderFilter: function (filterProperty: IProductFilter) {
+  renderFilter: function (filterProperty: interfaceProductFilter) {
     const wrapper = document.querySelectorAll('.filters__wrapper-list');
     const sliderInput = document.querySelectorAll('.scrollbar__input');
     const resetFilters = document.querySelector('.filters__link_reset');
@@ -89,7 +89,7 @@ export const storePage = {
     listProd ? (listProd.innerHTML = '') : listProd;
     const sort = new Sort();
     sort.sortProduct();
-    let products: IProduct[] = [];
+    let products: interfaceProduct[] = [];
     if (localStorage.getItem('currentProducts') !== null) {
       products = JSON.parse(localStorage.currentProducts);
     }
@@ -102,7 +102,7 @@ export const storePage = {
       products.forEach((prod) => drawProdCart(prod));
     }
 
-    function drawProdCart(product: IProduct) {
+    function drawProdCart(product: interfaceProduct) {
       const prod = document.createElement('div');
       prod.classList.add('product');
 
@@ -156,7 +156,7 @@ export const storePage = {
       prodAdd.classList.add('product__add');
       if (localStorage.getItem('cartProducts') !== null) {
         const cart = JSON.parse(localStorage.cartProducts);
-        cart.forEach((elem: IProduct) => {
+        cart.forEach((elem: interfaceProduct) => {
           if (elem.id === product.id) {
             prodAdd.classList.add('product__add_remove');
           }
@@ -184,7 +184,7 @@ export const storePage = {
           window.history.pushState({}, `/description/${product.id}`, `/description/${product.id}`);
           descriptionPage.render(`${product.id}`);
         } else {
-          let cart: IProduct[] = [];
+          let cart: interfaceProduct[] = [];
           let hasProduct = false;
           if (localStorage.getItem('cartProducts') !== null) {
             cart = JSON.parse(localStorage.cartProducts);

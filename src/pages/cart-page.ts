@@ -1,4 +1,4 @@
-import { IProduct } from '../types/product.interface';
+import { interfaceProduct } from '../types/product.interface';
 import templateCartPage from './cart-page_template';
 import Header from '../components/header/header';
 
@@ -10,7 +10,9 @@ export const cartPage = {
   },
 
   renderProductsCart: function () {
-    const products: Array<IProduct> = JSON.parse(localStorage.cartProducts).filter((x: IProduct) => x.amount);
+    const products: Array<interfaceProduct> = JSON.parse(localStorage.cartProducts).filter(
+      (x: interfaceProduct) => x.amount
+    );
     const cartList = document.querySelector('.cart-list');
     cartList ? (cartList.innerHTML = '') : cartList;
     products.forEach((prod, i) => drawProd((i + 1).toString(), prod));
@@ -18,10 +20,10 @@ export const cartPage = {
     productsLength ? (productsLength.textContent = products.length.toString()) : '0';
     const sumPrice = document.querySelector('.sum-price') as HTMLDivElement;
     let sumP = 0;
-    products.forEach((p) => (sumP += p.amount?(p.price*p.amount!):p.price));
+    products.forEach((p) => (sumP += p.amount ? p.price * p.amount! : p.price));
     sumPrice.textContent = sumP.toString() + '$';
 
-    function drawProd(index: string, product: IProduct) {
+    function drawProd(index: string, product: interfaceProduct) {
       const cartItem = document.createElement('div');
       cartItem.classList.add('cart-item');
       cartItem.classList.add('tile');
@@ -84,7 +86,7 @@ export const cartPage = {
       cartItemPointRight.classList.add('cart-item__point');
       cartItemPointRight.innerText = '+';
 
-      let cartProducts: Array<IProduct> = JSON.parse(localStorage.cartProducts);
+      let cartProducts: Array<interfaceProduct> = JSON.parse(localStorage.cartProducts);
       cartItemPointLeft.onclick = function () {
         const header = new Header();
         if (cartProducts.filter((y) => y.id == product.id)[0].amount == 1) {
