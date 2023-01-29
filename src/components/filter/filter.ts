@@ -2,7 +2,7 @@ import { IProductFilter, IProduct } from '../../types/product.interface';
 import DualSlider from '../../components/dual-slider/dual-slider';
 import Checkboxes from '../../components/checkbox/checkboxes';
 
-export class Filter {
+class Filter {
   property: IProductFilter;
   sliderPrice: DualSlider;
   sliderStock: DualSlider;

@@ -5,7 +5,7 @@ import storyPage from '../../pages/store-page';
 import cartPage from '../../pages/cart-page';
 import descriptionPage from '../../pages/description-page';
 
-export class Router {
+class Router {
   routes: { name: string; route: Route }[];
   constructor() {
     const cartLink = document.querySelector('.header__cart') as HTMLDivElement;

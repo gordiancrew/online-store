@@ -1,6 +1,6 @@
 import { IProduct } from '../../types/product.interface';
 
-export class Cart {
+class Cart {
   cart: IProduct[];
   constructor() {
     if (localStorage.getItem('cartProducts') !== null) {

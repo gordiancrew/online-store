@@ -1,6 +1,6 @@
 import { IFilterCheckbox } from '../../types/product.interface';
 
-export class Checkboxes {
+class Checkboxes {
   checkboxes: IFilterCheckbox[];
   i: number;
   block: string;

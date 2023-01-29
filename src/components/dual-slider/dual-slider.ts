@@ -1,6 +1,6 @@
 import { IFilterSlider } from '../../types/product.interface';
 
-export class DualSlider {
+class DualSlider {
   i: number;
   min: number;
   max: number;
