@@ -1,5 +1,5 @@
 import { IProduct, ESort } from '../../types/product.interface';
-export class Sort {
+class Sort {
   found = 0;
 
   setFound(amount: number) {
