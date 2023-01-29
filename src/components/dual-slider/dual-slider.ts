@@ -1,4 +1,4 @@
-import { IFilterSlider } from '../../types/product.interface';
+import { interfaceFilterSlider } from '../../types/product.interface';
 
 class DualSlider {
   i: number;
@@ -6,7 +6,7 @@ class DualSlider {
   max: number;
   currentMin: number;
   currentMax: number;
-  constructor(filterSlider: IFilterSlider, i: number) {
+  constructor(filterSlider: interfaceFilterSlider, i: number) {
     this.i = i;
     this.min = filterSlider.min;
     this.max = filterSlider.max;

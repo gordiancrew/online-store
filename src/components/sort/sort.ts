@@ -1,4 +1,4 @@
-import { interfaceProduct, ESort } from '../../types/product.interface';
+import { interfaceProduct, enumSort } from '../../types/product.interface';
 class Sort {
   found = 0;
 
@@ -23,23 +23,23 @@ class Sort {
       }
 
       switch (sort) {
-        case ESort.priceAsc:
+        case enumSort.priceAsc:
           arrFilterProducts.sort((a, b) => {
             return a.price - b.price;
           });
           break;
 
-        case ESort.priceDesc:
+        case enumSort.priceDesc:
           arrFilterProducts.sort((a, b) => {
             return b.price - a.price;
           });
           break;
-        case ESort.raitingAsc:
+        case enumSort.raitingAsc:
           arrFilterProducts.sort((a, b) => {
             return a.rating - b.rating;
           });
           break;
-        case ESort.raitingDesc:
+        case enumSort.raitingDesc:
           arrFilterProducts.sort((a, b) => {
             return b.rating - a.rating;
           });

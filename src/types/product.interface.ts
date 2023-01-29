@@ -30,13 +30,13 @@ export interface interfaceProductSource {
   title: null | string;
 }
 
-export interface IFilterCheckbox {
+export interface interfaceFilterCheckbox {
   name: string;
   current: number;
   max: number;
   checked?: boolean;
 }
-export interface IFilterSlider {
+export interface interfaceFilterSlider {
   currentMin: number;
   currentMax: number;
   min: number;
@@ -44,13 +44,13 @@ export interface IFilterSlider {
 }
 
 export interface interfaceProductFilter {
-  category: IFilterCheckbox[];
-  brand: IFilterCheckbox[];
-  price: IFilterSlider;
-  stock: IFilterSlider;
+  category: interfaceFilterCheckbox[];
+  brand: interfaceFilterCheckbox[];
+  price: interfaceFilterSlider;
+  stock: interfaceFilterSlider;
 }
 
-export enum ESort {
+export enum enumSort {
   priceAsc = 'price-asc',
   priceDesc = 'price-desc',
   raitingAsc = 'raiting-asc',
