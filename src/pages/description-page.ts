@@ -1,4 +1,4 @@
-import { IProduct } from '../types/product.interface';
+import { interfaceProduct } from '../types/product.interface';
 import templateDescriptionPage from './description-page_template';
 import Header from '../components/header/header';
 
@@ -9,13 +9,12 @@ export const descriptionPage = {
     this.renderDescription(id);
   },
   renderProdNotFound() {
-    console.log('prod not found');
     (document.querySelector('.main') as HTMLDivElement).innerHTML = this.template;
     this.renderNotFound();
   },
 
   renderDescription(id: string) {
-    const prod: IProduct = JSON.parse(localStorage.dataProducts).filter((x: IProduct) => x.id == id)[0];
+    const prod: interfaceProduct = JSON.parse(localStorage.dataProducts).filter((x: interfaceProduct) => x.id == id)[0];
     const chitCategory = document.querySelector('.chit-category');
     chitCategory ? (chitCategory.textContent = prod.category) : '';
     const chitBrand = document.querySelector('.chit-brand');
@@ -54,7 +53,7 @@ export const descriptionPage = {
       itemImg.onclick = function () {
         mainPhoto.src = itemImg.src;
       };
-      let cartProducts: Array<IProduct> = JSON.parse(localStorage.cartProducts);
+      let cartProducts: Array<interfaceProduct> = JSON.parse(localStorage.cartProducts);
       const btnAdd = document.querySelector('.btn-add') as HTMLElement;
       if (cartProducts.filter((y) => y.id == id).length > 0) {
         btnAdd.classList.add('btn-reserv');
@@ -63,7 +62,6 @@ export const descriptionPage = {
       btnAdd.onclick = function () {
         const header = new Header();
         if (cartProducts.filter((y) => y.id == id).length > 0) {
-          console.log('remove press');
           cartProducts.filter((y) => y.id == id)[0].amount = null;
           cartProducts = cartProducts.filter((x) => x.amount);
           localStorage.cartProducts = JSON.stringify(cartProducts);
@@ -73,7 +71,7 @@ export const descriptionPage = {
           prod.amount = 1;
           cartProducts.push(prod);
           localStorage.cartProducts = JSON.stringify(cartProducts);
-          console.log('add press');
+
           btnAdd.classList.add('btn-reserv');
           btnAdd.innerText = 'DROP FROM CART';
         }

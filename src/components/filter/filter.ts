@@ -1,20 +1,17 @@
-import { IProductFilter, IProduct } from '../../types/product.interface';
+import { interfaceProductFilter, interfaceProduct } from '../../types/product.interface';
 import DualSlider from '../../components/dual-slider/dual-slider';
 import Checkboxes from '../../components/checkbox/checkboxes';
 
-export class Filter {
-  property: IProductFilter;
+class Filter {
+  property: interfaceProductFilter;
   sliderPrice: DualSlider;
   sliderStock: DualSlider;
   checkboxesCategory: Checkboxes;
   checkboxesBrand: Checkboxes;
 
-  constructor(property: IProductFilter) {
-    // if (localStorage.getItem('filter') !== null) {
-    //   this.property = JSON.parse(localStorage.filter);
-    // } else {
+  constructor(property: interfaceProductFilter) {
     this.property = property;
-    // }
+
     const urlParam = new URL(window.location.href).searchParams;
     if (urlParam.has('category')) {
       const arrCategory = (urlParam.get('category') as string).split('↕');
@@ -193,8 +190,8 @@ export class Filter {
     }, 800);
   }
   filterProducts() {
-    let arrProducts: IProduct[] = [];
-    const arrFilterProducts: IProduct[] = [];
+    let arrProducts: interfaceProduct[] = [];
+    const arrFilterProducts: interfaceProduct[] = [];
     if (localStorage.getItem('dataProducts') !== null) {
       arrProducts = JSON.parse(localStorage.dataProducts);
     }
@@ -229,7 +226,7 @@ export class Filter {
     });
   }
   calculateFilters() {
-    let arrFilterProducts: IProduct[] = [];
+    let arrFilterProducts: interfaceProduct[] = [];
     if (localStorage.getItem('currentProducts') !== null) {
       arrFilterProducts = JSON.parse(localStorage.currentProducts);
     }
@@ -250,26 +247,8 @@ export class Filter {
       });
     });
 
-    // if (arrFilterProducts.length !== 0) {
-    //   this.property.price.currentMin = this.property.price.max;
-    //   this.property.price.currentMax = this.property.price.min;
-    //   arrFilterProducts.forEach((elem) => {
-    //     if (elem.price < this.property.price.currentMin) {
-    //       this.property.price.currentMin = elem.price;
-    //       console.log(this.property.price.currentMin);
-    //     }
-    //     if (elem.price > this.property.price.currentMax) {
-    //       this.property.price.currentMax = elem.price;
-    //     }
-    //   });
-    // } else {
-    //   this.property.price.currentMin = -1;
-    // }
-
     this.checkboxesCategory.render();
     this.checkboxesBrand.render();
-
-    //this.setSearchParameters();
   }
 }
 

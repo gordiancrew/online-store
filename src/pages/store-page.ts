@@ -1,4 +1,4 @@
-import { IProductFilter, IProduct } from './../types/product.interface';
+import { interfaceProductFilter, interfaceProduct } from './../types/product.interface';
 import templateStorePage from './store-page_template';
 import filterProperty from '../filter-object/filter-object';
 import Filter from './../components/filter/filter';
@@ -37,7 +37,7 @@ export const storePage = {
     });
   },
 
-  renderFilter: function (filterProperty: IProductFilter) {
+  renderFilter: function (filterProperty: interfaceProductFilter) {
     const wrapper = document.querySelectorAll('.filters__wrapper-list');
     const sliderInput = document.querySelectorAll('.scrollbar__input');
     const resetFilters = document.querySelector('.filters__link_reset');
@@ -53,7 +53,6 @@ export const storePage = {
           filter.filterProducts();
           filter.calculateFilters();
           this.renderProducts();
-          //filter.saveLocalStorage();
         }
       });
     });
@@ -64,12 +63,11 @@ export const storePage = {
         filter.filterProducts();
         filter.calculateFilters();
         this.renderProducts();
-        //filter.saveLocalStorage();
       });
     });
     sliderInput.forEach((elem) => {
       elem.addEventListener('mouseup', () => {
-        //filter.setSearchParameters();
+        //todo
       });
     });
 
@@ -81,7 +79,6 @@ export const storePage = {
       this.renderProducts();
       const select = document.querySelector('.sort__selector') as HTMLSelectElement;
       select.value = 'sort-title';
-      //filter.saveLocalStorage();
     });
     (copyLink as HTMLDivElement).addEventListener('click', () => {
       filter.copyToBuffer();
@@ -90,10 +87,9 @@ export const storePage = {
   renderProducts: function () {
     const listProd = document.querySelector('.list-products') as HTMLElement;
     listProd ? (listProd.innerHTML = '') : listProd;
-    //clear product list area befor new drawing
     const sort = new Sort();
     sort.sortProduct();
-    let products: IProduct[] = [];
+    let products: interfaceProduct[] = [];
     if (localStorage.getItem('currentProducts') !== null) {
       products = JSON.parse(localStorage.currentProducts);
     }
@@ -104,11 +100,9 @@ export const storePage = {
       listProd?.appendChild(title);
     } else {
       products.forEach((prod) => drawProdCart(prod));
-      //draw all elements type Product of data array
     }
 
-    function drawProdCart(product: IProduct) {
-      //draw new product card and append it to product list
+    function drawProdCart(product: interfaceProduct) {
       const prod = document.createElement('div');
       prod.classList.add('product');
 
@@ -153,11 +147,6 @@ export const storePage = {
       prodWrapperRating.appendChild(prodDiscont);
       prod.appendChild(prodWrapperRating);
 
-      //const prodDescription = document.createElement('div');
-      //prodDescription.classList.add('product__description');
-      //prodDescription.innerText = product.description;
-      //prod.appendChild(prodDescription);
-
       const prodWrapperPrice = document.createElement('div');
       prodWrapperPrice.classList.add('product__wrapper-price');
       const prodPrice = document.createElement('div');
@@ -167,7 +156,7 @@ export const storePage = {
       prodAdd.classList.add('product__add');
       if (localStorage.getItem('cartProducts') !== null) {
         const cart = JSON.parse(localStorage.cartProducts);
-        cart.forEach((elem: IProduct) => {
+        cart.forEach((elem: interfaceProduct) => {
           if (elem.id === product.id) {
             prodAdd.classList.add('product__add_remove');
           }
@@ -195,7 +184,7 @@ export const storePage = {
           window.history.pushState({}, `/description/${product.id}`, `/description/${product.id}`);
           descriptionPage.render(`${product.id}`);
         } else {
-          let cart: IProduct[] = [];
+          let cart: interfaceProduct[] = [];
           let hasProduct = false;
           if (localStorage.getItem('cartProducts') !== null) {
             cart = JSON.parse(localStorage.cartProducts);

@@ -1,4 +1,4 @@
-import { IProduct } from '../../types/product.interface';
+import { interfaceProduct } from '../../types/product.interface';
 import Loader from '../loader/loaderData';
 import StorageData from '../storage/storage';
 
@@ -8,7 +8,6 @@ class App {
 
   start() {
     this.loader.load('GET', (data) => this.storageData.createStateData(data));
-    console.log('get data products from API');
   }
 }
 

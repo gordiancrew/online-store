@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.46.0",
-    "@typescript-eslint/parser": "^5.46.0"
+    "@typescript-eslint/parser": "^5.46.0",
+    "route-parser": "^0.0.5"
   }
 }

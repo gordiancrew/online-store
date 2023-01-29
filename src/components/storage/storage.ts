@@ -1,13 +1,12 @@
-import { IProducts } from '../../types/product.interface';
+import { interfaceProducts } from '../../types/product.interface';
 import Controller from '../controller/controller';
 
 class StorageData {
   controller: Controller = new Controller();
-  createStateData(data: IProducts) {
+  createStateData(data: interfaceProducts) {
     const values = data?.products ? data.products : [];
     localStorage.dataProducts = JSON.stringify(values);
-    console.log('put data products in localStorage');
-    localStorage.cartProducts?localStorage.cartProducts:localStorage.cartProducts=JSON.stringify([]);
+    localStorage.cartProducts ? localStorage.cartProducts : (localStorage.cartProducts = JSON.stringify([]));
     this.controller.startAction();
   }
 }

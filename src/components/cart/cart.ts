@@ -1,7 +1,7 @@
-import { IProduct } from '../../types/product.interface';
+import { interfaceProduct } from '../../types/product.interface';
 
-export class Cart {
-  cart: IProduct[];
+class Cart {
+  cart: interfaceProduct[];
   constructor() {
     if (localStorage.getItem('cartProducts') !== null) {
       this.cart = JSON.parse(localStorage.cartProducts);

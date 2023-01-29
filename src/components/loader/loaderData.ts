@@ -1,4 +1,4 @@
-import { IProducts } from '../../types/product.interface';
+import { interfaceProducts } from '../../types/product.interface';
 
 class Loader {
   errorHandler(res: Response): Response {
@@ -10,11 +10,11 @@ class Loader {
     return res;
   }
 
-  load(method: string, callback: (data: IProducts) => void): void {
+  load(method: string, callback: (data: interfaceProducts) => void): void {
     fetch('https://dummyjson.com/products?limit=100', { method })
       .then(this.errorHandler)
       .then((res2) => res2.json())
-      .then((data: IProducts) => callback(data))
+      .then((data: interfaceProducts) => callback(data))
       .catch((err) => console.error(err));
   }
 }

@@ -1,5 +1,5 @@
-import { IProductFilter } from '../types/product.interface';
-export const filterProperty: IProductFilter = {
+import { interfaceProductFilter } from '../types/product.interface';
+export const filterProperty: interfaceProductFilter = {
   category: [
     { name: 'smartphones', current: 0, max: 5 },
     { name: 'laptops', current: 0, max: 5 },

@@ -1,6 +1,6 @@
-import { Cart } from '../cart/cart';
+import Cart from '../cart/cart';
 
-export class Header {
+class Header {
   cart: Cart;
   constructor() {
     this.cart = new Cart();

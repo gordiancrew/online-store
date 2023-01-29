@@ -1,16 +1,16 @@
-export interface IProduct {
+export interface interfaceProduct {
   id: string;
   tittle: string;
 }
-export interface IProducts {
+export interface interfaceProducts {
   filter(arg0: (_item: string, idx: number) => boolean): unknown;
   length: number;
   status: string;
   totalResults: number;
-  products: IProduct[];
+  products: interfaceProduct[];
 }
 
-export interface IProduct {
+export interface interfaceProduct {
   id: string;
   title: string;
   description: string;
@@ -22,30 +22,37 @@ export interface IProduct {
   images: string[];
   category: string;
   stock: number;
-  amount:null|number;
+  amount: null | number;
 }
 
-export interface IProductSource {
+export interface interfaceProductSource {
   id: null | string;
   title: null | string;
 }
 
-export interface IFilterCheckbox {
+export interface interfaceFilterCheckbox {
   name: string;
   current: number;
   max: number;
   checked?: boolean;
 }
-export interface IFilterSlider {
+export interface interfaceFilterSlider {
   currentMin: number;
   currentMax: number;
   min: number;
   max: number;
 }
 
-export interface IProductFilter {
-  category: IFilterCheckbox[];
-  brand: IFilterCheckbox[];
-  price: IFilterSlider;
-  stock: IFilterSlider;
+export interface interfaceProductFilter {
+  category: interfaceFilterCheckbox[];
+  brand: interfaceFilterCheckbox[];
+  price: interfaceFilterSlider;
+  stock: interfaceFilterSlider;
+}
+
+export enum enumSort {
+  priceAsc = 'price-asc',
+  priceDesc = 'price-desc',
+  raitingAsc = 'raiting-asc',
+  raitingDesc = 'raiting-desc',
 }

@@ -1,10 +1,10 @@
-import { IFilterCheckbox } from '../../types/product.interface';
+import { interfaceFilterCheckbox } from '../../types/product.interface';
 
-export class Checkboxes {
-  checkboxes: IFilterCheckbox[];
+class Checkboxes {
+  checkboxes: interfaceFilterCheckbox[];
   i: number;
   block: string;
-  constructor(filterCheckbox: IFilterCheckbox[], i: number, block: string) {
+  constructor(filterCheckbox: interfaceFilterCheckbox[], i: number, block: string) {
     this.checkboxes = filterCheckbox;
     this.i = i;
     this.block = block;
