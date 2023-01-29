@@ -10,11 +10,8 @@ export class Filter {
   checkboxesBrand: Checkboxes;
 
   constructor(property: IProductFilter) {
-    // if (localStorage.getItem('filter') !== null) {
-    //   this.property = JSON.parse(localStorage.filter);
-    // } else {
     this.property = property;
-    // }
+
     const urlParam = new URL(window.location.href).searchParams;
     if (urlParam.has('category')) {
       const arrCategory = (urlParam.get('category') as string).split('↕');
@@ -250,26 +247,8 @@ export class Filter {
       });
     });
 
-    // if (arrFilterProducts.length !== 0) {
-    //   this.property.price.currentMin = this.property.price.max;
-    //   this.property.price.currentMax = this.property.price.min;
-    //   arrFilterProducts.forEach((elem) => {
-    //     if (elem.price < this.property.price.currentMin) {
-    //       this.property.price.currentMin = elem.price;
-    //       console.log(this.property.price.currentMin);
-    //     }
-    //     if (elem.price > this.property.price.currentMax) {
-    //       this.property.price.currentMax = elem.price;
-    //     }
-    //   });
-    // } else {
-    //   this.property.price.currentMin = -1;
-    // }
-
     this.checkboxesCategory.render();
     this.checkboxesBrand.render();
-
-    //this.setSearchParameters();
   }
 }
 

@@ -53,7 +53,6 @@ export const storePage = {
           filter.filterProducts();
           filter.calculateFilters();
           this.renderProducts();
-          //filter.saveLocalStorage();
         }
       });
     });
@@ -64,12 +63,11 @@ export const storePage = {
         filter.filterProducts();
         filter.calculateFilters();
         this.renderProducts();
-        //filter.saveLocalStorage();
       });
     });
     sliderInput.forEach((elem) => {
       elem.addEventListener('mouseup', () => {
-        //filter.setSearchParameters();
+        //todo
       });
     });
 
@@ -81,7 +79,6 @@ export const storePage = {
       this.renderProducts();
       const select = document.querySelector('.sort__selector') as HTMLSelectElement;
       select.value = 'sort-title';
-      //filter.saveLocalStorage();
     });
     (copyLink as HTMLDivElement).addEventListener('click', () => {
       filter.copyToBuffer();
@@ -90,7 +87,6 @@ export const storePage = {
   renderProducts: function () {
     const listProd = document.querySelector('.list-products') as HTMLElement;
     listProd ? (listProd.innerHTML = '') : listProd;
-    //clear product list area befor new drawing
     const sort = new Sort();
     sort.sortProduct();
     let products: IProduct[] = [];
@@ -104,11 +100,9 @@ export const storePage = {
       listProd?.appendChild(title);
     } else {
       products.forEach((prod) => drawProdCart(prod));
-      //draw all elements type Product of data array
     }
 
     function drawProdCart(product: IProduct) {
-      //draw new product card and append it to product list
       const prod = document.createElement('div');
       prod.classList.add('product');
 
@@ -152,11 +146,6 @@ export const storePage = {
       prodWrapperRating.appendChild(prodRaiting);
       prodWrapperRating.appendChild(prodDiscont);
       prod.appendChild(prodWrapperRating);
-
-      //const prodDescription = document.createElement('div');
-      //prodDescription.classList.add('product__description');
-      //prodDescription.innerText = product.description;
-      //prod.appendChild(prodDescription);
 
       const prodWrapperPrice = document.createElement('div');
       prodWrapperPrice.classList.add('product__wrapper-price');

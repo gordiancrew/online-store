@@ -21,26 +21,6 @@ export class Sort {
       if (localStorage.getItem('currentProducts') !== null) {
         arrFilterProducts = JSON.parse(localStorage.currentProducts);
       }
-      // if (sort === 'price-asc') {
-      //   arrFilterProducts.sort((a, b) => {
-      //     return a.price - b.price;
-      //   });
-      // }
-      // if (sort === 'price-desc') {
-      //   arrFilterProducts.sort((a, b) => {
-      //     return b.price - a.price;
-      //   });
-      // }
-      // if (sort === 'raiting-asc') {
-      //   arrFilterProducts.sort((a, b) => {
-      //     return a.rating - b.rating;
-      //   });
-      // }
-      // if (sort === 'raiting-desc') {
-      //   arrFilterProducts.sort((a, b) => {
-      //     return b.rating - a.rating;
-      //   });
-      // }
 
       switch (sort) {
         case ESort.priceAsc:
