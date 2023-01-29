@@ -1,0 +1,54 @@
+.icon {
+  background-size: contain;
+  position: relative;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
+  &_rs {
+    background-image: url(../src/assets/svg/rs.svg);
+    width: 108px;
+    height: 40px;
+    @include media-mobil {
+      width: 80px;
+      height: 30px;
+    }
+  }
+  &_git {
+    background-image: url(../src/assets/svg/git.svg);
+    width: 40px;
+    height: 40px;
+    @include media-mobil {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  &_logo {
+    background-image: url(../src/assets/svg/logo.svg);
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    margin-right: 6px;
+    cursor: pointer;
+  }
+  &_cart {
+    background-image: url(../src/assets/svg/shopping-cart.svg);
+    width: 40px;
+    height: 46px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+  }
+
+  &_grid {
+    background-image: url(../src/assets/svg/grid.svg);
+    width: 30px;
+    height: 30px;
+  }
+
+  &_list {
+    background-image: url(../src/assets/svg/list.svg);
+    width: 30px;
+    height: 30px;
+  }
+}

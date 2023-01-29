@@ -22,7 +22,7 @@ export interface IProduct {
   images: string[];
   category: string;
   stock: number;
-  amount:null|number;
+  amount: null | number;
 }
 
 export interface IProductSource {
@@ -48,4 +48,11 @@ export interface IProductFilter {
   brand: IFilterCheckbox[];
   price: IFilterSlider;
   stock: IFilterSlider;
+}
+
+export enum ESort {
+  priceAsc = 'price-asc',
+  priceDesc = 'price-desc',
+  raitingAsc = 'raiting-asc',
+  raitingDesc = 'raiting-desc',
 }

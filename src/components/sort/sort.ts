@@ -1,4 +1,4 @@
-import { IProduct } from '../../types/product.interface';
+import { IProduct, ESort } from '../../types/product.interface';
 export class Sort {
   found = 0;
 
@@ -21,26 +21,51 @@ export class Sort {
       if (localStorage.getItem('currentProducts') !== null) {
         arrFilterProducts = JSON.parse(localStorage.currentProducts);
       }
-      if (sort === 'price-asc') {
-        arrFilterProducts.sort((a, b) => {
-          return a.price - b.price;
-        });
+      // if (sort === 'price-asc') {
+      //   arrFilterProducts.sort((a, b) => {
+      //     return a.price - b.price;
+      //   });
+      // }
+      // if (sort === 'price-desc') {
+      //   arrFilterProducts.sort((a, b) => {
+      //     return b.price - a.price;
+      //   });
+      // }
+      // if (sort === 'raiting-asc') {
+      //   arrFilterProducts.sort((a, b) => {
+      //     return a.rating - b.rating;
+      //   });
+      // }
+      // if (sort === 'raiting-desc') {
+      //   arrFilterProducts.sort((a, b) => {
+      //     return b.rating - a.rating;
+      //   });
+      // }
+
+      switch (sort) {
+        case ESort.priceAsc:
+          arrFilterProducts.sort((a, b) => {
+            return a.price - b.price;
+          });
+          break;
+
+        case ESort.priceDesc:
+          arrFilterProducts.sort((a, b) => {
+            return b.price - a.price;
+          });
+          break;
+        case ESort.raitingAsc:
+          arrFilterProducts.sort((a, b) => {
+            return a.rating - b.rating;
+          });
+          break;
+        case ESort.raitingDesc:
+          arrFilterProducts.sort((a, b) => {
+            return b.rating - a.rating;
+          });
+          break;
       }
-      if (sort === 'price-desc') {
-        arrFilterProducts.sort((a, b) => {
-          return b.price - a.price;
-        });
-      }
-      if (sort === 'raiting-asc') {
-        arrFilterProducts.sort((a, b) => {
-          return a.rating - b.rating;
-        });
-      }
-      if (sort === 'raiting-desc') {
-        arrFilterProducts.sort((a, b) => {
-          return b.rating - a.rating;
-        });
-      }
+
       localStorage.setItem('currentProducts', JSON.stringify(arrFilterProducts));
     }
   }
