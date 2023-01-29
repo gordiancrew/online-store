@@ -1,9 +1,7 @@
 import { IProduct } from '../../types/product.interface';
 export class Sort {
-  found: number;
-  constructor() {
-    this.found = 0;
-  }
+  found = 0;
+
   setFound(amount: number) {
     this.found = amount;
   }
