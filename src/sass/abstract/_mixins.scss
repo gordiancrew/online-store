@@ -10,7 +10,7 @@
   }
 }
 
-@mixin media-mobil {
+@mixin media-mobile {
   @media (max-width: $mobil-width) {
     @content;
   }

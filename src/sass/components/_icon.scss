@@ -9,7 +9,7 @@
     background-image: url(../src/assets/svg/rs.svg);
     width: 108px;
     height: 40px;
-    @include media-mobil {
+    @include media-mobile {
       width: 80px;
       height: 30px;
     }
@@ -18,7 +18,7 @@
     background-image: url(../src/assets/svg/git.svg);
     width: 40px;
     height: 40px;
-    @include media-mobil {
+    @include media-mobile {
       width: 30px;
       height: 30px;
     }
