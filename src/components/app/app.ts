@@ -8,7 +8,6 @@ class App {
 
   start() {
     this.loader.load('GET', (data) => this.storageData.createStateData(data));
-    console.log('get data products from API');
   }
 }
 

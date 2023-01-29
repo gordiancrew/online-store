@@ -9,7 +9,6 @@ export const descriptionPage = {
     this.renderDescription(id);
   },
   renderProdNotFound() {
-    console.log('prod not found');
     (document.querySelector('.main') as HTMLDivElement).innerHTML = this.template;
     this.renderNotFound();
   },
@@ -63,7 +62,6 @@ export const descriptionPage = {
       btnAdd.onclick = function () {
         const header = new Header();
         if (cartProducts.filter((y) => y.id == id).length > 0) {
-          console.log('remove press');
           cartProducts.filter((y) => y.id == id)[0].amount = null;
           cartProducts = cartProducts.filter((x) => x.amount);
           localStorage.cartProducts = JSON.stringify(cartProducts);
@@ -73,7 +71,7 @@ export const descriptionPage = {
           prod.amount = 1;
           cartProducts.push(prod);
           localStorage.cartProducts = JSON.stringify(cartProducts);
-          console.log('add press');
+
           btnAdd.classList.add('btn-reserv');
           btnAdd.innerText = 'DROP FROM CART';
         }

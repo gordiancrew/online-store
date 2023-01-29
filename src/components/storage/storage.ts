@@ -6,8 +6,7 @@ class StorageData {
   createStateData(data: IProducts) {
     const values = data?.products ? data.products : [];
     localStorage.dataProducts = JSON.stringify(values);
-    console.log('put data products in localStorage');
-    localStorage.cartProducts?localStorage.cartProducts:localStorage.cartProducts=JSON.stringify([]);
+    localStorage.cartProducts ? localStorage.cartProducts : (localStorage.cartProducts = JSON.stringify([]));
     this.controller.startAction();
   }
 }
