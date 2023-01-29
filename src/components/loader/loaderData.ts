@@ -1,6 +1,5 @@
 import { IProducts } from '../../types/product.interface';
 
-type NewType = (data: IProducts) => void;
 class Loader {
   errorHandler(res: Response): Response {
     if (!res.ok) {
